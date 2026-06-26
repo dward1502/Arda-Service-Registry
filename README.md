@@ -39,7 +39,7 @@ wrap the blueprint with persistence, authorization, health probes, and deploymen
 specific transport adapters rather than changing the core contract shape in
 place.
 
-## ARDA Architecture Role
+## Architecture Overview
 
 ```mermaid
 flowchart TB
@@ -53,6 +53,20 @@ flowchart TB
     ToolGate[Tool Gate] --> Governance
     Governance --> Receipts[Audit and Compliance Receipts]
 ```
+
+## Relationship to ARDA
+
+Service Registry is ARDA's discovery and lifecycle catalog. It gives Agent Loop,
+Tool Gate, Signal Grid, Council, and HUD surfaces a shared contract for which
+services exist, what governance policy applies, and which lifecycle state should
+be exposed to operators.
+
+## Status
+
+Blueprint-stage Rust crate. The current surface is suitable for local contract
+tests, documentation, and extension planning; production deployments should add
+persistence, authorization, health probes, and transport adapters outside the
+core blueprint.
 
 ---
 
