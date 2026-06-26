@@ -19,6 +19,43 @@ This crate provides the foundational contract definitions, governance interfaces
 
 ---
 
+## Vision
+
+`annunimas-service-registry` is the ARDA catalog layer: it gives agentic services
+a shared vocabulary for what exists, which governance posture applies, and which
+dependencies must be satisfied before a runtime promotes work. In the broader
+ARDA operating system, it anchors service discovery to inspect-act-verify
+receipts instead of informal process notes.
+
+## Getting Started
+
+```bash
+cargo test
+cargo doc --no-deps
+```
+
+Use this crate as a contract-first starting point. Production registries should
+wrap the blueprint with persistence, authorization, health probes, and deployment
+specific transport adapters rather than changing the core contract shape in
+place.
+
+## ARDA Architecture Role
+
+```mermaid
+flowchart TB
+    Operator[Human Operator] --> HUD[ARDA HUD]
+    HUD --> Registry[Service Registry Blueprint]
+    AgentLoop[Agent Loop Contract] --> Registry
+    Registry --> Contracts[Service Contracts]
+    Registry --> Governance[Governance Validator]
+    Registry --> Status[Service Lifecycle State]
+    SignalGrid[Signal Grid] --> Registry
+    ToolGate[Tool Gate] --> Governance
+    Governance --> Receipts[Audit and Compliance Receipts]
+```
+
+---
+
 ## 📋 Overview
 
 The `annunimas-service-registry` crate defines:
